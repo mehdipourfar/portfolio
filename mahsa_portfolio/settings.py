@@ -40,9 +40,12 @@ INSTALLED_APPS = [
 
     'sass_processor',
     'django_extensions',
+    'ckeditor',
+    'ckeditor_uploader',
 
     'paint',
     'utils',
+    'gallery',
 ]
 
 MIDDLEWARE = [
@@ -140,5 +143,4 @@ STATICFILES_FINDERS = (
 )
 
 
-# COMPRESS_ENABLED = True
-# COMPRESS_OFFLINE = True
+CKEDITOR_UPLOAD_PATH = "ck_uploads/"

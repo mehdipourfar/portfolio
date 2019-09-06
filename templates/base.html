@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="{% static 'css/simple-sidebar.css' %}">
 
     <link href="{% sass_src 'scss/styles.scss' %}" rel="stylesheet" type="text/css" />
+    <title>{% block title %}Mahsa Mohammadi{% endblock %}</title>
     {% block headers %}
     {% endblock %}
 
-    <title>Hello, world!</title>
+
   </head>
   <body>
 
@@ -21,11 +22,11 @@
       <!-- Sidebar -->
       <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
-          <a href="#" class="list-group-item list-group-item-action bg-light">CV</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">Artist Statement</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">Work</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">Publication</a>
-          <a href="#" class="list-group-item list-group-item-action bg-light">Contact</a>
+          <a href="/cv/" class="list-group-item list-group-item-action bg-light">CV</a>
+          <a href="/statement/" class="list-group-item list-group-item-action bg-light">Artist Statement</a>
+          <a href="/works/" class="list-group-item list-group-item-action bg-light">Work</a>
+          <a href="/publications/" class="list-group-item list-group-item-action bg-light">Publication</a>
+          <a href="/contact/" class="list-group-item list-group-item-action bg-light">Contact</a>
         </div>
       </div>
 
@@ -36,12 +37,12 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <h2>Mahsa Mohammadi</h2>
-          <div class="container-fluid">
-            {% block content %}
-            {% endblock %}
+        </nav>
+        <div class="container px-md-5">
+          {% block content %}
+          {% endblock %}
         </div>
       </div>
-
     </div>
     <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ block.super }} | Publications
+{% endblock %}
+
+{% block content %}
+  {% for pub in publications %}
+    <h3>{{ pub.title}}</h3>
+    <div>{{ pub.body | safe }}</div>
+  {% endfor %}
+{% endblock %}

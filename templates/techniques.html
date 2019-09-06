@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ block.super }} | Techniques
+{% endblock %}
+
+{% block content %}
+  <div class="images-container">
+    {% for tec in techniques %}
+      <div class="item">
+        <img src="{{tec.image.image_url}}">
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
