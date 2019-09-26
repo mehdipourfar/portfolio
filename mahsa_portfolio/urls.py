@@ -14,7 +14,8 @@ urlpatterns = [
     path('cv/', paint.views.cv),
     path('statement/', paint.views.statement),
     path('contact/', paint.views.contact),
-    path('works/', paint.views.techniques),
+    path('techniques/', paint.views.techniques),
+    re_path(r'techniques/(?P<pk>\d+)/', paint.views.technique_detail, name='technique_detail'),
     path('publications/', paint.views.publications),
     path('', paint.views.home),
 ]

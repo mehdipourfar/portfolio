@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+  {{ block.super }} | Techniques
+{% endblock %}
+
+{% block headers %}
+  <link href="{% static 'css/simplelightbox.min.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+{% block content %}
+  <div class="images-container">
+    <div class="row thumbs">
+      {% for paint in technique.paints.all %}
+        <div class="col s6 l4 image-item">
+          <a href="{{ paint.image.image_url }}" title={{ paint.title }}>
+            <img class="img-cat"
+                 data-caption="{{ paint.title }}"
+                 src="{{ paint.image.image_url }}">
+            <div class="overlay">{{ paint.title }}</div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/simple-lightbox.min.js' %}"></script>
+  <script>
+   window.onload = function() {
+     var lightbox = $('.thumbs .image-item a').simpleLightbox({
+       fileExt: false,
+       captionsData: 'title',
+     });
+   }
+  </script>
+{% endblock %}

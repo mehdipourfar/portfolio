@@ -6,10 +6,15 @@
 
 {% block content %}
   <div class="images-container">
-    {% for tec in techniques %}
-      <div class="item">
-        <img src="{{tec.image.image_url}}">
-      </div>
-    {% endfor %}
+    <div class="row">
+      {% for tec in techniques %}
+        <div class="col s6 l4 image-item">
+          <a href="{% url 'technique_detail' tec.id %}">
+            <img class="img-cat" src="{{tec.image.image_url}}">
+            <div class="overlay">{{ tec.name }}</div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 {% endblock %}

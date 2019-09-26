@@ -25,6 +25,7 @@ class Paint(BaseModel):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
+        related_name='paints'
     )
     image = models.OneToOneField(
         'gallery.Image',
