@@ -1,0 +1,38 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+WorkingDirectory=/web/portfolio/
+User=www-data
+Group=www-data
+Environment="LANG=en_US.utf8"
+Environment="LC_ALL=en_US.UTF-8"
+Environment="LC_LANG=en_US.UTF-8"
+Environment="DJANGO_SETTINGS_MODULE=portfolio.production_settings"
+PIDFile=/run/portfolio/portfolio.pid
+KillMode=process
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PermissionsStartOnly=true
+PrivateTmp=true
+Type=forking
+Restart=always
+
+ExecStartPre=-/bin/mkdir -p /run/portfolio/
+ExecStartPre=/bin/chown -R www-data:www-data /run/portfolio/
+ExecStartPre=-/bin/mkdir -p /var/log/portfolio/
+ExecStartPre=/bin/chown -R www-data:www-data /var/log/portfolio/
+
+ExecStart=/usr/bin/env bash -c "source /opt/portfolio/bin/activate; \
+          /opt/portfolio/bin/gunicorn                               \
+          --workers 2                                               \
+          --bind=127.0.0.1:8000                                     \
+          --pythonpath=/web/portfolio/                              \
+          --error-logfile=/var/log/portfolio/gunicorn.error         \
+	  --pid=/run/portfolio/portfolio.pid                        \
+          --daemon                                                  \
+          config.wsgi:application"
+
+[Install]
+WantedBy=multi-user.target
