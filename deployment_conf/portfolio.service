@@ -32,7 +32,7 @@ ExecStart=/usr/bin/env bash -c "source /opt/portfolio/bin/activate; \
           --error-logfile=/var/log/portfolio/gunicorn.error         \
 	  --pid=/run/portfolio/portfolio.pid                        \
           --daemon                                                  \
-          config.wsgi:application"
+          portfolio.wsgi:application"
 
 [Install]
 WantedBy=multi-user.target
