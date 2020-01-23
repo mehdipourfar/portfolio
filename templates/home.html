@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
+{% load gallery_tags %}
 
 {% block content %}
   <div class="center">
-    {% if image_url %}
-      <img class="img-cat"
-           src="{{image_url}}"
-           style="max-width: 500px; margin-top: 20px"
-      />
-    {% endif %}
+    <img class="img-cat"
+         src="{% image_url image_id 500 %}"
+         style="max-width: 500px; margin-top: 20px"
+    />
   </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load gallery_tags %}
 
 {% block title %}
   {{ block.super }} | Techniques
@@ -11,7 +11,7 @@
       {% for tec in techniques %}
         <div class="col s6 l4 image-item">
           <a href="{% url 'technique_detail' tec.id %}">
-            <img class="img-cat" src="{{tec.image.image_url}}">
+            <img class="img-cat" src={% image_url tec.image_id 500 500 %}>
             <div class="overlay">{{ tec.name }}</div>
           </a>
         </div>

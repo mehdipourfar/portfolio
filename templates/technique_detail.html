@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load gallery_tags %}
 
 {% block title %}
   {{ block.super }} | Techniques
@@ -15,10 +16,10 @@
     <div class="row thumbs">
       {% for paint in technique.paints.all %}
         <div class="col s6 l4 image-item">
-          <a href="{{ paint.image.image_url }}" title={{ paint.title }}>
+          <a href="{% image_url paint.image_id %}" title={{ paint.title }}>
             <img class="img-cat"
                  data-caption="{{ paint.title }}"
-                 src="{{ paint.image.image_url }}">
+                 src="{% image_url paint.image_id 500 500 %}">
             <div class="overlay">{{ paint.title }}</div>
           </a>
         </div>

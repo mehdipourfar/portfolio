@@ -7,7 +7,7 @@ def home(request):
     info = get_object_or_404(Info)
     context = {
         'page': 'home',
-        'image_url': info.image.image_url if info.image_id else None
+        'image_id': info.image_id if info.image_id else None
     }
     return render(request, 'home.html', context)
 
