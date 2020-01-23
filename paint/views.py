@@ -4,7 +4,12 @@ from .models import Info, Publication, Technique
 
 
 def home(request):
-    return render(request, 'base.html', {'page': 'home'})
+    info = get_object_or_404(Info)
+    context = {
+        'page': 'home',
+        'image_url': info.image.image_url if info.image_id else None
+    }
+    return render(request, 'home.html', context)
 
 
 def cv(request):
@@ -49,6 +54,7 @@ def techniques(request):
         'techniques': Technique.objects.all(),
         'page': 'techniques',
     })
+
 
 def technique_detail(request, pk):
     technique = get_object_or_404(Technique, pk=pk)

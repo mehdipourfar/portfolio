@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+  <div class="center">
+    {% if image_url %}
+      <img class="img-cat"
+           src="{{image_url}}"
+           style="max-width: 500px; margin-top: 20px"
+      />
+    {% endif %}
+  </div>
+{% endblock %}

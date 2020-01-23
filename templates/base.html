@@ -47,13 +47,13 @@
     </div>
 
     <script src="{% static 'js/materialize.min.js' %}"></script>
-    {% block scripts %}
-    {% endblock %}
     <script>
      document.addEventListener('DOMContentLoaded', function() {
        var elems = document.querySelectorAll('.sidenav');
        var instances = M.Sidenav.init(elems, {});
      });
     </script>
+    {% block scripts %}
+    {% endblock %}
   </body>
 </html>
