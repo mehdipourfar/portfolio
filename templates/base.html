@@ -1,5 +1,5 @@
 {% load static %}
-{% load sass_tags %}
+{% load compress %}
 <!doctype html>
 
 <html lang="en">
@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
 
-    <link href="{% sass_src 'scss/styles.scss' %}" rel="stylesheet" type="text/css" />
+    {% compress css %}
+    <link href="{% static 'scss/styles.scss' %}" rel="stylesheet" type="text/x-scss" />
+    {% endcompress %}
     <title>{% block title %}Mahsa Mohammadi{% endblock %}</title>
     {% block headers %}
     {% endblock %}

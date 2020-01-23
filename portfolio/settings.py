@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'sass_processor',
+    'compressor',
     'django_extensions',
     'ckeditor',
     'ckeditor_uploader',
@@ -127,8 +127,13 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 
-    'sass_processor.finders.CssFinder',
+    'compressor.finders.CompressorFinder'
 )
 
 
 CKEDITOR_UPLOAD_PATH = "ck_uploads/"
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
+COMPRESS_OFFLINE = True

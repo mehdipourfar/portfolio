@@ -3,6 +3,7 @@ from .settings import *
 
 DEBUG = False
 ALLOWED_HOSTS = [os.getenv('SITE_HOST')]
+COMPRESS_OFFLINE = True
 
 DATABASES = {
     'default': {
